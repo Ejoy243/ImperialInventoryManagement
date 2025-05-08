@@ -19,7 +19,7 @@ builder.Host.UseSerilog((context, services, configuration) => configuration
             .Enrich.FromLogContext()
             .WriteTo.Async(a => a.Console())
             .WriteTo.MSSqlServer(
-                connectionString: "Server=localhost,1433;Database=ImperialData;User Id=sa;Password=password;TrustServerCertificate=True;",
+                connectionString: "Server=mssql,1433;Database=ImperialData;User Id=sa;Password=password;TrustServerCertificate=True;",
                 sinkOptions: new MSSqlServerSinkOptions { TableName = "Logs", AutoCreateSqlTable = true },
                 restrictedToMinimumLevel: LogEventLevel.Information
 )
