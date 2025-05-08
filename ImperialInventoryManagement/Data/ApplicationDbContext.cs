@@ -32,6 +32,7 @@ namespace ImperialInventoryManagement.Data
                 optionsBuilder.UseSqlServer(
                 _config.GetConnectionString("DefaultConnection"));
             }
+            Database.Migrate();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

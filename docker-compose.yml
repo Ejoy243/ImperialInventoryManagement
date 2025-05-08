@@ -14,7 +14,7 @@ services:
                 - /var/opt/mssql/secrets:/var/opt/mssql/secrets
                 environment:
                         - ACCEPT_EULA=Y
-                        - SA_PASSWORD=123456789
+                        - SA_PASSWORD=password
         recipe:
                 build: .
                 depends_on:
