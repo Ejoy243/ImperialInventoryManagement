@@ -1,0 +1,21 @@
+﻿@page
+@model IndexModel
+@using Microsoft.AspNetCore.Identity
+@using ImperialInventoryManagement.Models
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+@{
+    Layout = "/Pages/Shared/_Layout1.cshtml"; 
+}
+
+<div class="text-center">
+    <h2 class="display-4">Imperial Inventory Management</h2>
+    <h1>NO REBELS ARE ALLOWED PAST THIS POINT</h1>
+    <h1>AUTHORIZED IMPERIAL PERSONAL ONLY</h1>
+    <h1><a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Login">Login</a></h1>
+    <h1><a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Register">Register</a></h1>
+</div>
+
+
+
+

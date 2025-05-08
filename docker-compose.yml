@@ -1,0 +1,14 @@
+﻿version: '3.8'
+
+services:
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - kestrel
+
+  kestrel:
+    build: .
+    ports:
+      - "80"

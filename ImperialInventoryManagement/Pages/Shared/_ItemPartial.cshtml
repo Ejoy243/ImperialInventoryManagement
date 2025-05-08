@@ -1,0 +1,22 @@
+﻿@using ImperialInventoryManagement.Models;
+@model Item
+<div class="container">
+    <h2>@Model.Name</h2>
+    <p>@Model.Description</p>
+    <div>
+        <strong>Categories:</strong>
+        @if(Model.ItemCategories != null && Model.ItemCategories.Any())
+        {
+            <ul>
+                @foreach(var category in Model.ItemCategories)
+                {
+                    <li>@category</li>
+                }
+            </ul>
+        }
+        else
+        {
+            <span>No categories</span>
+        }
+    </div>
+</div>

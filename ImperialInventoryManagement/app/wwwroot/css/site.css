@@ -1,0 +1,103 @@
+
+ 
+div {
+    background-color: black;
+    color: white;
+}
+h1 {
+    color: white;
+}
+
+html {
+    font-size: 14px;
+    color: white
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem white;
+  color: white
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+  background-color: black;
+  color: black;
+}
+
+navbar-nav {
+    color: white;
+    background-color: black;
+}
+
+container {
+    color: white;
+}
+
+.navbar {
+    color: white;
+    background-color: black;
+}
+
+td {
+    color: white;
+}
+
+header {
+    color: white;
+    background-color: black;
+}
+
+a {
+    color: white;
+    background-color: black;
+}
+
+div.container {
+    color: white;
+}
+
+.navbar-light .navbar-brand {
+    color: white;
+    background-color: black;
+}
+
+.nav-item {
+    color: white;
+}
+
+a.nav-link.text-dark {
+    color: white;
+}
+
+th {
+    color: white;
+}
+
+header {
+    background-color: black;
+}
+
+.category-select, .item-select {
+    color: black;
+    width: 500%;
+}
+
+input#file {
+    opacity: 0;
+    position: absolute; z-index: -1;
+}
+
+.mb-3, .Input_Email, .Input_Password, .Input_ConfirmPassword, .form-control:focus {
+    color: black;
+}

@@ -1,0 +1,34 @@
+﻿@page
+@using ImperialInventoryManagement.Models
+@model ImperialInventoryManagement.Pages.ShipmentsModel
+@{
+}
+<div class="container">
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Created By</th>
+                <th>Facility</th>
+                <th>Tracking</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach(Shipment s in Model.Shipments)
+            {
+                <tr>
+                    <td>@s.UserId</td>
+                    <td>@Model.GetFacility(s.Order.InventoryItem.FacilityId).Name</td>
+                    <td>@s.TrackingID</td>
+                    <td>
+                        <form method="post"  asp-page-handler="UpdateStatus">
+                            <input type="hidden" name="shipmentId" value="@s.Id"/>
+                        <select  name="newStatus" asp-for="@s.Status" asp-items="@Model.status" onchange="this.form.submit()"></select>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

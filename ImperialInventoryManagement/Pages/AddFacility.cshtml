@@ -1,0 +1,23 @@
+﻿@page 
+@model ImperialInventoryManagement.Pages.AddFacilityModel
+
+
+<div class="container">
+    <form id="form" method="post" onsubmit="handleSubmit()">
+        <div class="form-group">
+            <label asp-for="FacilityView.Name" class="control-label"></label>
+            <input asp-for="@Model.FacilityView.Name" />
+            <span asp-validation-for="FacilityView.Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="FacilityView.Location" class="control-label"></label>
+            <select asp-for="FacilityView.Location" asp-items="@Model.Locations"></select>
+            <span asp-validation-for="FacilityView.Location" ></span>
+        </div>
+
+        <div class="form-group">
+           <br />
+           <input type="submit" />
+        </div>
+    </form>
+</div>

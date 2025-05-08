@@ -1,0 +1,50 @@
+﻿@page "{Id}"
+@using ImperialInventoryManagement.Models;
+@model ImperialInventoryManagement.Pages.FacilityInventoryModel
+@{
+}
+<div class="text-center">
+    <div class="container">      
+         <a class="btn btn-primary" asp-page="/StockFacility" asp-route-Id="@RouteData.Values["Id"]">Stock Facility</a>
+    </div>
+    <div class="container">
+         <a class="btn btn-primary" asp-page="/CreateOrder" asp-route-Id="@RouteData.Values["Id"]">Create an Order</a>
+    </div>
+</div>
+<div class="container">
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Min Stock</th>
+                <th>Max Stock</th>
+                <th>Current Stock</th>
+                <th></th>
+            </tr>
+        </thead>
+    <tbody>
+         @foreach(InventoryItem i in Model.items)
+        {
+            <tr>
+                 <td>@Model.GetItem(i.ItemId).Name</td>
+                    <td>@Model.GetItem(i.ItemId).Min</td>
+                    <td>@Model.GetItem(i.ItemId).Max</td>
+                <td>@(i.ItemAmount - i.ItemReserve)</td>
+                <td>
+                @if(i.ItemAmount < Model.GetItem(i.ItemId).Min)
+                {
+                    <div class="container">
+                        <form method="get">
+                            <button type="submit" asp-page="/RequestShipment">Request Shipment</button>
+                        </form>
+                    </div>
+                }
+                </td>
+              
+            </tr>
+
+        }
+         
+    </tbody>
+    </table>
+</div>

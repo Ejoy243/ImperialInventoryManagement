@@ -1,0 +1,27 @@
+﻿@page "{Id}"
+@model ImperialInventoryManagement.Pages.StockFacilityModel
+@{
+}
+
+<form method="post">
+    <label for="item-select">
+        Select Item</br>
+        <select id="item-select"
+                class="item-select form-control"
+                asp-for="SelectedItemId"
+                asp-items="Model.Items"
+                onchange="this.form.submit()">
+                <option value="">Select Item</option>
+        </select>
+    </label>
+
+    @if (Model.Item != null)
+    {
+        <div class="form-group">
+            Amount in stock:
+            <input asp-for="Quantity" type="number" min="@Model.inventoryItem.ItemAmount" max="@Model.Item.Max" />
+        </div>
+        <button type="submit" asp-page-handler="Submit">Submit</button>
+    }
+
+</form>
