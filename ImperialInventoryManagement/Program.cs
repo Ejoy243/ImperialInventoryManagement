@@ -6,6 +6,7 @@ using ImperialInventoryManagement.Repos;
 using ImperialInventoryManagement.Services;
 using Serilog.Events;
 using Serilog;
+using Serilog.Sinks.MSSqlServer;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,11 +18,12 @@ builder.Host.UseSerilog((context, services, configuration) => configuration
             .ReadFrom.Services(services)
             .Enrich.FromLogContext()
             .WriteTo.Async(a => a.Console())
-            .WriteTo.SQLite(
-                sqliteDbPath: logPath + @"-logs.db",
-                restrictedToMinimumLevel: LogEventLevel.Information,
-                storeTimestampInUtc: true
-            ));
+            .WriteTo.MSSqlServer(
+                connectionString: "server=(localdb)\\mssqllocaldb;Database=ImperialContext-f2e0482c-952d-4b1c-afe9-a1a3dfe52e55;Trusted_Connection=True;MultipleActiveResultSets=true",
+                sinkOptions: new MSSqlServerSinkOptions { TableName = "Logs", AutoCreateSqlTable = true },
+                restrictedToMinimumLevel: LogEventLevel.Information
+)
+);
 
 
 
