@@ -1,14 +1,24 @@
-﻿version: '3.8'
-
+﻿version: "3.8"
 services:
-  nginx:
-    build: ./nginx
-    ports:
-      - "80:80"
-    depends_on:
-      - kestrel
-
-  kestrel:
-    build: .
-    ports:
-      - "80"
+        nginx:
+                build: ./Nginx
+                ports:
+                        - "80:80"
+        mssql:
+                image: mcr.microsoft.com/mssql/server:2022-latest
+                ports:
+                        - 1433:1433
+                volumes:
+                - /var/opt/mssql/data:/var/opt/mssql/data
+                - /var/opt/mssql/log:/var/opt/mssql/log
+                - /var/opt/mssql/secrets:/var/opt/mssql/secrets
+                environment:
+                        - ACCEPT_EULA=Y
+                        - SA_PASSWORD=123456789
+        recipe:
+                build: .
+                depends_on:
+                        - nginx
+                        - mssql
+                ports:
+                        - "80"
